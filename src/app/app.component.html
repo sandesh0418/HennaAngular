@@ -1,0 +1,24 @@
+﻿<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" style="min-height: 55px !important;">
+   
+    <a class="nav-item nav-link" style="color: white;
+    font-family: Roboto,Helvetica Neue,sans-serif; font-size: 14px;font-weight: 500;" routerLink="/"> <i class="bi bi-hourglass-split">OCHenna</i>
+</a>
+    <div class="navbar-nav" *ngIf="currentUser">
+        
+        
+        <a class="nav-item nav-link" routerLink="/list" *ngIf="!currentUser.isAdmin">View Timesheet</a>
+        <a class="nav-item nav-link" routerLink="/payhistory" *ngIf="!currentUser.isAdmin">Pay History</a>
+        <a class="nav-item nav-link" routerLink="/sales" *ngIf="currentUser.isAdmin">Sales</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
+
+<!-- main app container -->
+
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+

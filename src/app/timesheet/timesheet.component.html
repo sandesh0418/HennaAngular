@@ -1,0 +1,117 @@
+<div *ngIf="employeeID != undefined" style="margin-top:  50px;">
+
+<!-- <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" >
+  <div class="container">
+    <div class="row">
+  <div class="form-group col-md-4">
+    
+      <label for="from">From</label>
+      <input type="date" formControlName="from" class="form-control"  />
+    
+  </div>
+  
+  <div class="form-group col-md-4">
+    
+      <label for="to">To</label>
+      <input type="date" formControlName="to" class="form-control"  />
+      </div>
+  
+<div class="col-md-4" style="line-height: 6;">
+  <button [disabled]="error" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Filter
+  </button>
+</div>
+</div>
+  <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+</div>
+</form> -->
+</div>
+<div style="text-align: right;margin-top: 30px;" *ngIf="selection?.selected?.length>1">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+  <form [formGroup]="filterForm" (ngSubmit)="onSubmit()" >
+    
+    <!-- <label for="payRate">Pay Rate</label> -->
+    <input type="number" formControlName="payRate" placeholder="Pay Rate" class="form-control"  />
+    <input type="text" formControlName="name" placeholder="Pay Name" class="form-control"  />
+ 
+  </form>
+  </div>
+  <div class="col-md-4">
+<button style="background-color: #3f51b5;size: 30px;color: white;" 
+(click)="merge()"  
+type="button">Merge</button>
+</div>
+<div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+
+    </div>
+    </div>
+</div>
+<table mat-table [dataSource]="timesheet" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="select">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let row">
+      <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)">
+      </mat-checkbox>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="Day">
+    <th mat-header-cell *matHeaderCellDef> Day </th>
+    <td mat-cell *matCellDef="let element"> {{element.day}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="ClockedIn">
+    <th mat-header-cell *matHeaderCellDef> Clocked In </th>
+    <td mat-cell *matCellDef="let element"> {{formatDate(element.startTime)}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="ClockedOut">
+    <th mat-header-cell *matHeaderCellDef> Clocked Out </th>
+    <td mat-cell *matCellDef="let element"> {{formatDate(element.endTime)}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <!-- <ng-container matColumnDef="LunchIn">
+    <th mat-header-cell *matHeaderCellDef> Lunch In </th>
+    <td mat-cell *matCellDef="let element"> {{element.lunchStartTime}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="LunchOut">
+    <th mat-header-cell *matHeaderCellDef> Lunch Out </th>
+    <td mat-cell *matCellDef="let element"> {{element.lunchEndTime}} </td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="HoursWorked">
+    <th mat-header-cell *matHeaderCellDef> Hours </th>
+    <td mat-cell *matCellDef="let element"> {{element.hoursWorked}} </td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="LunchHour">
+    <th mat-header-cell *matHeaderCellDef> Lunch Break </th>
+    <td mat-cell *matCellDef="let element"> {{element.lunchHours}} </td>
+  </ng-container> -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
+

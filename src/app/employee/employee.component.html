@@ -1,0 +1,37 @@
+
+<div>
+
+  <div class="col-md-8 offset-md-2 mt-5">
+     
+      <div class="card">
+          <h4 class="card-header">Employee Details</h4>
+          <div class="card-body">
+            <div class="container">
+              <div *ngIf="employee" style="margin-bottom: 50px;">
+                <p>Name: {{employee.name}}</p>
+                <hr/>
+                <p>Username: {{employee.email}}</p>
+                <hr/>
+                <p>Account verified: {{employee.verified}}</p>
+                <hr/>
+              
+                <p *ngIf="employee.active" >Status: <span style="color: green;">Active</span></p>
+                <p *ngIf="!employee.active" >Status: <span style="color: red;">Inactive</span></p>
+                <hr/>
+              </div>
+              <div class="row justify-content-around">
+            <button  class="btn btn-primary" class="col-4" (click)="getTimesheet()">
+
+              Timesheet
+          </button>
+
+          <button  class="btn btn-primary"class="col-4" (click)="getPayHistory()">
+
+            Pay History
+        </button>
+        </div>
+        </div>
+          </div>
+      </div>
+  </div>
+  </div>

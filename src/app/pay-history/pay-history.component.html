@@ -1,0 +1,37 @@
+
+<div style="padding-top: 50px;">
+  <div style="margin-bottom: 50px; 
+  text-align: center;font-weight: 500; 
+  color: green;font-size: 30px;">Pay List</div>
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false" 
+                       *ngFor="let l of list" 
+                       style="background-color: rgb(218, 218, 218);margin-bottom: 10px;;">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       {{l.payHistoryName}}
+      </mat-panel-title>
+      <mat-panel-description *ngIf="l.paid">
+        <i class="bi bi-check-circle-fill" style="color: grey;">Paid</i>
+
+      </mat-panel-description>
+      <mat-panel-description *ngIf="!l.paid">
+        <i class="bi bi-calculator" style="color: red;">Pending</i>
+        
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>
+      Total Pay:
+      ${{transform(l.totalHours,l.payRate)}}</p>
+
+      <p>
+        Start Period: {{formatDate(l.payBeginDate)}}
+      </p>
+
+      <p>
+        End Period: {{formatDate(l.payEndDate)}}
+      </p>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
