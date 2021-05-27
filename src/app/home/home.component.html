@@ -10,7 +10,7 @@
 
         <button *ngIf="!clockedIn && !loading" mat-raised-button color="primary" (click)="saveTime()">In For Day</button>
         <button *ngIf="clockedIn && !loading" mat-raised-button color="warn" (click)="saveTime()">Clock Out</button>
-        
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
         <hr/>
         <div>
         <div style="margin-top: 40px;font-size: 20px; font-weight: 500;">

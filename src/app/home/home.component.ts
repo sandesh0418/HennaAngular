@@ -11,6 +11,7 @@ import { Employee } from '@app/_models/employee';
 import {Subject} from 'rxjs';
 import {NgbAlert} from '@ng-bootstrap/ng-bootstrap';
 
+
 @Component({ templateUrl: 'home.component.html',
 selector: 'home'})
 export class HomeComponent {
@@ -24,6 +25,8 @@ export class HomeComponent {
     error: string = "";
     staticAlertClosed = false;
   successMessage = '';
+    locationOn: boolean = false;
+
   private _success = new Subject<string>();
   @ViewChild('staticAlert', {static: false}) staticAlert: NgbAlert;
   @ViewChild('selfClosingAlert', {static: false}) selfClosingAlert: NgbAlert;
@@ -82,13 +85,34 @@ export class HomeComponent {
 
     saveTime(){
         this.loading = true;
-        this.userService.logTime(this.clockedIn, 98.99, 20.0099)
-        .subscribe((a: string) => {
-          this.router.navigate(['/list']);
-         
+
+       
+        navigator.geolocation.getCurrentPosition((position) => {
+            this.error = "";
+           
+            this.locationOn = true;
             
             
-            });
+
+            this.userService.logTime(this.clockedIn,position.coords.latitude,position.coords.longitude)
+            .subscribe((a: string) => {
+                
+              this.router.navigate(['/list']);
+             
+                
+                
+                });
+        });
+
+      
+            
+
+        
+        if(this.locationOn == false){
+            this.loading = false;
+            this.error = "Please turn the location!";
+        }
+   
      
     }
     get f() { return this.salesForm.controls; }
