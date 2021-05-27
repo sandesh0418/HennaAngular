@@ -110,7 +110,7 @@ export class HomeComponent {
         
         if(this.locationOn == false){
             this.loading = false;
-            this.error = "Please turn the location!";
+            this.error = "Please turn on the location!";
         }
    
      
