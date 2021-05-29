@@ -50,7 +50,7 @@ export class UserService {
     {
         var obj = null;
         let dateTime = new Date();
-        console.log(dateTime);
+       
        
          obj = {
             Latitude: lat,
