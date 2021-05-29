@@ -85,8 +85,7 @@ export class HomeComponent {
 
     saveTime(){
         this.loading = true;
-
-       
+        
         navigator.geolocation.getCurrentPosition((position) => {
             this.error = "";
            

@@ -49,18 +49,16 @@ export class UserService {
     logTime(clockedIn: boolean, lat: any, long: any )
     {
         var obj = null;
-        if(clockedIn){
+        let dateTime = new Date();
+        console.log(dateTime);
+       
          obj = {
             Latitude: lat,
-            Longitude: long
+            Longitude: long,
+            date: dateTime.toLocaleString().replace(',','')
         }
-    }
-    else{
-         obj = {
-            Latitude: lat,
-            Longitude: long
-        }
-    }
+    
+   
         return this.http.post<any>(`${environment.apiUrl}/api/employee`,obj)
         .pipe(map(data => data),
         catchError((error) => throwError(error)));
