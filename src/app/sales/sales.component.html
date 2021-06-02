@@ -1,28 +1,55 @@
-<div >
-  <table mat-table [dataSource]="sales" class="mat-elevation-z8" style="margin-top: 30px; border: 1px solid grey; padding: 35px;box-shadow: inset 0 -1px 1px 1px rgb(100 121 143 / 96%);" >
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
 
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef> Date </th>
-      <td mat-cell *matCellDef="let element"> {{formatDate(element.salesDate)}} </td>
-    </ng-container>
-  
+<div style="padding-top: 50px;">
+  <div style="margin-bottom: 50px; 
+  text-align: center;font-weight: 500; 
+  color: green;font-size: 30px;">Sales List</div>
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false" 
+                       *ngFor="let l of sales" 
+                       style="background-color: rgb(218, 218, 218);margin-bottom: 10px;;">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       {{l.name}}
+      </mat-panel-title>
+      <mat-panel-description>
+        <i class="" style="color: grey;">Total sales: ${{l.totalSales}}</i>
 
-    <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef> Total Sales </th>
-      <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
-    </ng-container>
-  
+      </mat-panel-description>
+     
+    </mat-expansion-panel-header>
+   
+    <div>
 
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  
-  </table>
-  
-  
-  
+
+      <table mat-table [dataSource]="l.sales" class="mat-elevation-z8" style="margin: 0 auto; margin-top: 30px; border: 1px solid grey; padding: 35px;box-shadow: inset 0 -1px 1px 1px rgb(100 121 143 / 96%);" >
+    
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+    
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let element"> {{formatDate(element.salesDate)}} </td>
+        </ng-container>
+      
+    
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef> Total Sales </th>
+          <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+        </ng-container>
+      
+    
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+      </table>
+      
+      
+      
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
 </div>

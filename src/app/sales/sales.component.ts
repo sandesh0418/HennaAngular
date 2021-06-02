@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Sales } from '@app/_models/sales';
+import { WeeklySales } from '@app/_models/weeklySales';
 import { UserService } from '@app/_services';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from '@app/_services';
 })
 export class SalesComponent implements OnInit {
 
-  sales: Sales[];
+  sales: WeeklySales[];
   displayedColumns = ['date', 'amount'];
   constructor(private userService: UserService) { }
 

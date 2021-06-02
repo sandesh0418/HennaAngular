@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog, MatDialogConfig, TooltipPosition } from '@angular/material';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-timesheet',
@@ -23,6 +24,7 @@ error: string;
 loading = false;
 filterForm: FormGroup;
 ids: number[] = [];
+dateString: string;
 @Input('matTooltipPosition') position: TooltipPosition;
 doMerge: boolean = false;
 
@@ -66,7 +68,9 @@ displayedColumns: string[] = ['Day', 'ClockedIn', 'ClockedOut',
   formatDate(date: string): string {
     if (date) {
       
-      return date.replace('T', ' ');
+      this.dateString = date.replace('T', ' ');
+
+      return this.dateString;
     }
     return date;
   }
