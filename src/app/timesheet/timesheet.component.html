@@ -55,13 +55,13 @@ type="button">Merge</button>
   <!-- Name Column -->
   <ng-container matColumnDef="ClockedIn">
     <th mat-header-cell *matHeaderCellDef> Clocked In </th>
-    <td mat-cell *matCellDef="let element"> {{formatDate(element.startTime) | date: 'M/d/yy, h:mm a'}} </td>
+    <td mat-cell *matCellDef="let element"> {{formatDate(element.startTime) | date: 'M/d/yy h:mm a'}} </td>
   </ng-container>
 
   <!-- Weight Column -->
   <ng-container matColumnDef="ClockedOut">
     <th mat-header-cell *matHeaderCellDef> Clocked Out </th>
-    <td mat-cell *matCellDef="let element"> {{formatDate(element.endTime) | date: 'M/d/yy, h:mm a'}} </td>
+    <td mat-cell *matCellDef="let element"> {{formatDate(element.endTime) | date: 'M/d/yy h:mm a'}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
