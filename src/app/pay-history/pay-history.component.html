@@ -23,7 +23,7 @@
     </mat-expansion-panel-header>
     <p>
       Total Pay:
-      ${{transform(l.totalHours,l.payRate)}}</p>
+      ${{transform(l.totalHours,l.payRate)|currency}}</p>
 
       <p>
         Start Period: {{formatDate(l.payBeginDate)}}
