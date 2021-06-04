@@ -8,6 +8,8 @@ import { map, catchError } from 'rxjs/operators';
 import { Employee } from '@app/_models/employee';
 import { EmployeeTimesheet } from '@app/_models/employeeTimeSheet';
 import { PayHistory } from '@app/_models/payHistory';
+import { WeeklyReport } from '@app/_models/weeklyReport';
+import { Expenses } from '@app/_models/expenses';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -143,6 +145,36 @@ export class UserService {
         
         return this.http.get<any>
         (`${environment.apiUrl}/api/admin/sales`)
+        .pipe(map(data => data),
+        catchError((error) => throwError(error)));
+    }
+
+    addExpenses(name: string, cost: number){
+        
+        const obj = {
+            expenseName: name,
+            cost: cost
+        }
+        return this.http.post<any>
+        (`${environment.apiUrl}/api/admin/expenses`, obj)
+        .pipe(map(data => data),
+        catchError((error) => throwError(error)));
+    }
+
+    getReports(){
+        
+       
+        return this.http.get<WeeklyReport>
+        (`${environment.apiUrl}/api/admin/reports`)
+        .pipe(map(data => data),
+        catchError((error) => throwError(error)));
+    }
+
+    getExpenses(){
+        
+       
+        return this.http.get<Expenses[]>
+        (`${environment.apiUrl}/api/admin/expensesList`)
         .pipe(map(data => data),
         catchError((error) => throwError(error)));
     }

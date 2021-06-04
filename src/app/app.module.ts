@@ -30,6 +30,8 @@ import { DialogMergeComponent } from './dialog-merge/dialog-merge.component';
 import { AdminPayHistoryComponent } from './admin-payHistory/admin-payHistory.component';
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { SalesComponent } from './sales/sales.component';
+import { ReportsComponent } from './reports/reports.component';
+import { ExpensesComponent } from './expenses/expenses.component';
 
 @NgModule({
     imports: [
@@ -56,7 +58,7 @@ import { SalesComponent } from './sales/sales.component';
         
         
     ],
-    declarations: [								
+    declarations: [										
         AppComponent,
         HomeComponent,
         LoginComponent,
@@ -67,7 +69,9 @@ import { SalesComponent } from './sales/sales.component';
       DialogMergeComponent,
       AdminPayHistoryComponent,
       SalesComponent,
-      SalesComponent
+      SalesComponent,
+      ReportsComponent,
+      ExpensesComponent
    ],
    entryComponents: [SnackBarComponent, DialogMergeComponent],
     providers: [

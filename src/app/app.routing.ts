@@ -8,6 +8,8 @@ import { AuthGuard } from './_helpers';
 import { EmployeeComponent } from './employee/employee.component';
 import { AdminPayHistoryComponent } from './admin-payHistory/admin-payHistory.component';
 import { SalesComponent } from './sales/sales.component';
+import { ReportsComponent } from './reports/reports.component';
+import { ExpensesComponent } from './expenses/expenses.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -15,6 +17,8 @@ const routes: Routes = [
     {path: 'list', component: TimesheetComponent},
     {path: 'payhistory', component: PayHistoryComponent},
     {path: 'sales', component: SalesComponent},
+    {path: 'reports', component: ReportsComponent},
+    {path: 'expenses', component: ExpensesComponent},
     {path: 'employee/:id', component: EmployeeComponent},
     {path: 'employee/:id/timesheet', component: TimesheetComponent},
     {path: 'employee/:id/payHistory', component: AdminPayHistoryComponent},

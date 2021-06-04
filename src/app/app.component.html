@@ -10,6 +10,8 @@
         <a class="nav-item nav-link" routerLink="/list" *ngIf="!currentUser.isAdmin">View Timesheet</a>
         <a class="nav-item nav-link" routerLink="/payhistory" *ngIf="!currentUser.isAdmin">Pay History</a>
         <a class="nav-item nav-link" routerLink="/sales" *ngIf="currentUser.isAdmin">Sales</a>
+        <a class="nav-item nav-link" routerLink="/reports" *ngIf="currentUser.isAdmin">Reports</a>
+        <a class="nav-item nav-link" routerLink="/expenses" *ngIf="currentUser.isAdmin">Expenses</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
 </nav>

@@ -1,7 +1,7 @@
 import { DialogMergeComponent } from './../dialog-merge/dialog-merge.component';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, ModuleWithComponentFactories } from '@angular/core';
 import { EmployeeTimesheet } from '@app/_models/employeeTimeSheet';
 import { UserService } from '@app/_services';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -66,6 +66,7 @@ displayedColumns: string[] = ['Day', 'ClockedIn', 'ClockedOut',
   get f() { return this.filterForm.controls; }
 
   formatDate(date: string): string {
+    
     if (date) {
       
       this.dateString = date.replace('T', ' ');

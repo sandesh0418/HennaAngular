@@ -1,0 +1,78 @@
+<div style="padding-top: 50px;">
+  <div style="margin-bottom: 50px; 
+  text-align: center;font-weight: 500; 
+  color: green;font-size: 30px;">Expenses</div>
+<div class="container">
+ 
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <h4 class="card-header">Add</h4>
+        <div class="card-body">
+            <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                        <div *ngIf="f.name.errors.required">Name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Cost">Cost</label>
+                    <input type="number" formControlName="cost" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cost.errors }" />
+                    <div *ngIf="submitted && f.cost.errors" class="invalid-feedback">
+                        <div *ngIf="f.cost.errors.required">Cost is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Submit
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+                <ngb-alert #selfClosingAlert *ngIf="successMessage" type="success" (closed)="successMessage = ''">{{ successMessage }}
+                </ngb-alert>
+            </form>
+        </div>
+    </div>
+
+
+
+    </div>
+    <div class="col-md-6" *ngIf="expenses">
+      <table mat-table [dataSource]="expenses" class="mat-elevation-z8" style="margin: 0 auto; border: 1px solid grey; padding: 35px;box-shadow: inset 0 -1px 1px 1px rgb(100 121 143 / 96%);" >
+    
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+    
+        <ng-container matColumnDef="expensesName">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.expenseName}} </td>
+          <td mat-footer-cell *matFooterCellDef> Total cost </td>
+        </ng-container>
+      
+    
+        <ng-container matColumnDef="cost">
+          <th mat-header-cell *matHeaderCellDef> Cost </th>
+          <td mat-cell *matCellDef="let element"> {{element.cost | currency}} </td>
+          <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
+        </ng-container>
+
+
+      
+    
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+       
+      </table>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+  </div>
