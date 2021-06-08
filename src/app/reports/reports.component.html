@@ -7,7 +7,7 @@
 
   
     <div  *ngIf="reports">
-      <table mat-table [dataSource]="reports.reports" class="mat-elevation-z8" style="margin: 0 auto; border: 1px solid grey; padding: 35px;box-shadow: inset 0 -1px 1px 1px rgb(100 121 143 / 96%);" >
+      <table mat-table [dataSource]="reports.reports" class="mat-elevation-z8" style="margin: 0 auto;" >
     
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
@@ -20,11 +20,7 @@
         </ng-container>
       
     
-        <ng-container matColumnDef="pay">
-          <th mat-header-cell *matHeaderCellDef> Pay </th>
-          <td mat-cell *matCellDef="let element"> {{element.pay | currency}} </td>
-          <td mat-footer-cell *matFooterCellDef> Total Profit </td>
-        </ng-container>
+     
 
         <ng-container matColumnDef="totalSales">
           <th mat-header-cell *matHeaderCellDef> Total Sales </th>
@@ -32,13 +28,19 @@
             
             {{element.totalSales | currency}}
           </td>
-          <td mat-footer-cell *matFooterCellDef> </td>
+          <td mat-footer-cell *matFooterCellDef> Total Profit </td>
         </ng-container>
 
         <ng-container matColumnDef="store">
           <th mat-header-cell *matHeaderCellDef> Store </th>
           <td mat-cell *matCellDef="let element"> {{element.store | currency}} </td>
           <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pay">
+          <th mat-header-cell *matHeaderCellDef> Pay </th>
+          <td mat-cell *matCellDef="let element"> {{element.pay | currency}} </td>
+          <td mat-footer-cell *matFooterCellDef>  </td>
         </ng-container>
 
         <ng-container matColumnDef="netProfit">

@@ -21,7 +21,7 @@ export class ReportsComponent implements OnInit {
 
     successMessage = '';
     reports: WeeklyReport;
-    displayedColumns = ['weekNum', 'pay', 'totalSales', 'store', 'netProfit'];
+    displayedColumns = ['weekNum',  'totalSales', 'store', 'pay','netProfit'];
  
   constructor(private formBuilder: FormBuilder,
             private userService: UserService) { }
