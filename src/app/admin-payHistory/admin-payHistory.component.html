@@ -1,4 +1,5 @@
-<div style="margin-top:  50px;"> 
+<div style="margin-top:  50px;position: relative;
+overflow: auto;"> 
 <table mat-table [dataSource]="payHistoryList" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
@@ -23,7 +24,7 @@
     <td mat-cell *matCellDef="let element"> {{formatDate(element.payEndDate)}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="star" stickyEnd>
+  <ng-container matColumnDef="star">
     <th mat-header-cell *matHeaderCellDef></th>
     <td mat-cell *matCellDef="let element">
       <i class="bi bi-check-lg" *ngIf="element.paid" style="color: green;"></i>

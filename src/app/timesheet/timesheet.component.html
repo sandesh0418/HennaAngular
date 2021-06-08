@@ -1,5 +1,5 @@
 <div style="margin-top:  50px;">
-</div>
+
 <div style="text-align: right;margin-top: 30px; border: 1px solid grey; padding: 35px;box-shadow: inset 0 -1px 1px 1px rgb(100 121 143 / 96%);" 
 *ngIf="selection?.selected?.length>0"  >
   <div class="container">
@@ -24,7 +24,7 @@ type="button">Merge</button>
 <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
 </div>
     </div>
-  
+  <div style="position: relative; overflow: auto;">
 <table mat-table [dataSource]="timesheet" class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
@@ -89,5 +89,5 @@ type="button">Merge</button>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 </table>
-
-
+</div>
+</div>

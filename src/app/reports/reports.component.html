@@ -6,7 +6,8 @@
  
 
   
-    <div  *ngIf="reports">
+    <div  *ngIf="reports" style="position: relative;
+    overflow: auto;">
       <table mat-table [dataSource]="reports.reports" class="mat-elevation-z8" style="margin: 0 auto;" >
     
         <!--- Note that these columns can be defined in any order.
