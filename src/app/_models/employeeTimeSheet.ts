@@ -8,5 +8,9 @@ export class EmployeeTimesheet {
     hoursWorked: string;
     lunchHours: string;
     timesheetID: number;
+    clockInLat: number;
+    clockOutLat: number;
+    clockInLong: number;
+    clockOutLong: number;
   
 }

@@ -80,6 +80,17 @@ type="button">Merge</button>
     <td mat-cell *matCellDef="let element"> {{element.hoursWorked}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="ClockInLoc">
+    <th mat-header-cell *matHeaderCellDef> Clock In Location </th>
+    
+    <td mat-cell *matCellDef="let element" style="text-align: center;"> <i class="bi bi-pin-map-fill" style="cursor: pointer; font-size: 20px;"  (click)="redirect(element.clockInLat, element.clockInLong)" *ngIf="element.clockInLat != null && element.clockInLong != null"></i> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="ClockOutLoc">
+    <th mat-header-cell *matHeaderCellDef> Clock Out Location </th>
+    <td mat-cell *matCellDef="let element" style="text-align: center;"> <i class="bi bi-pin-map-fill" style="cursor: pointer; font-size: 20px;" (click)="redirect(element.clockOutLat, element.clockOutLong)" *ngIf="element.clockOutLat != null && element.clockOutLong != null"></i> </td>
+  </ng-container>
+
   <!-- <ng-container matColumnDef="LunchHour">
     <th mat-header-cell *matHeaderCellDef> Lunch Break </th>
     <td mat-cell *matCellDef="let element"> {{element.lunchHours}} </td>

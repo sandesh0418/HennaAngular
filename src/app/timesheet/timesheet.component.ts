@@ -29,6 +29,8 @@ dateString: string;
 doMerge: boolean = false;
 
 
+
+
 displayedColumns: string[] = ['Day', 'ClockedIn', 'ClockedOut', 
 //'LunchIn', 'LunchOut', 
 'HoursWorked'
@@ -49,7 +51,7 @@ displayedColumns: string[] = ['Day', 'ClockedIn', 'ClockedOut',
     if(this.employeeID != undefined){
       this.displayedColumns = ['select','Day', 'ClockedIn', 'ClockedOut', 
       //'LunchIn', 'LunchOut', 
-      'HoursWorked'
+      'HoursWorked', 'ClockInLoc', 'ClockOutLoc'
       //, 'LunchHour'
       ];
     }
@@ -83,7 +85,7 @@ displayedColumns: string[] = ['Day', 'ClockedIn', 'ClockedOut',
     }
     else{
       
-      console.log(this.selection.selected);
+     
       for(let i = 0; i < this.selection.selected.length;i++){
         this.ids.push(this.selection.selected[i].timesheetID);
       }
@@ -142,6 +144,14 @@ displayedColumns: string[] = ['Day', 'ClockedIn', 'ClockedOut',
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.timesheetID + 1}`;
+  }
+
+  redirect(lat: number, long: number){
+      if(lat != null && long != null){
+        window.open("https://www.google.com/maps/search/?api=1&query="+lat+"%2C"+long, "_blank");
+        
+      }
+     
   }
 
 
