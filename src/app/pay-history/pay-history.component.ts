@@ -22,7 +22,7 @@ export class PayHistoryComponent implements OnInit {
   }
 
   transform(value: any, rate: any){
-    return Math.round(value*rate*100)/100;
+    return Math.ceil((value*rate*100)/100);
   }
   
   formatDate(date: string){

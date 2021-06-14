@@ -34,7 +34,7 @@ export class AdminPayHistoryComponent implements OnInit {
   }
 
   round(value: number){
-    return Math.round(value);
+    return Math.ceil(value);
   }
 
   updateStatus(row: any){
