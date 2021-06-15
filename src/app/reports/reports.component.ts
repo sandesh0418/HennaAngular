@@ -5,6 +5,7 @@ import { debounceTime, first } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import {NgbAlert} from '@ng-bootstrap/ng-bootstrap';
 import { WeeklyReport } from '@app/_models/weeklyReport';
+import {saveAs} from 'file-saver';
 
 @Component({
   selector: 'app-reports',
@@ -21,7 +22,7 @@ export class ReportsComponent implements OnInit {
 
     successMessage = '';
     reports: WeeklyReport;
-    displayedColumns = ['weekNum',  'totalSales', 'store', 'pay','netProfit'];
+    displayedColumns = ['weekNum',  'totalSales', 'store', 'pay','netProfit', 'download'];
  
   constructor(private formBuilder: FormBuilder,
             private userService: UserService) { }
@@ -38,5 +39,18 @@ export class ReportsComponent implements OnInit {
 
   }
 
-
+  downloadFile(weekNum: number){
+    this.userService.getFile(weekNum)
+  .subscribe(
+            success => {
+              saveAs(success, `Week${weekNum}Report`); 
+            },
+            err => {
+                alert("Server error while downloading file.");
+            }
+        );
 }
+  }
+
+
+

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
-import { from, throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Employee } from '@app/_models/employee';
 import { EmployeeTimesheet } from '@app/_models/employeeTimeSheet';
@@ -177,6 +177,20 @@ export class UserService {
         (`${environment.apiUrl}/api/admin/expensesList`)
         .pipe(map(data => data),
         catchError((error) => throwError(error)));
+    }
+
+    getFile(weekNum: number): Observable<any>{
+        let fileExtension = 'text/csv';
+
+  return this.http.get(`${environment.apiUrl}/api/admin/reportFile?weekNum=${weekNum}`
+  ,{responseType: 'blob'})
+  .pipe(
+    map((res) => {
+          
+          var blob = new Blob([res], {type: fileExtension})
+          return blob;            
+    }));
+
     }
 
 

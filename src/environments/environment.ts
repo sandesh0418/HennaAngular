@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'https://henna-app.azurewebsites.net'
+    apiUrl: 'http://henna-app.azurewebsites.net'
 };
 
 /*

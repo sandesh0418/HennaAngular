@@ -49,6 +49,13 @@
           <td mat-cell *matCellDef="let element"> {{element.netProfit | currency}} </td>
           <td mat-footer-cell *matFooterCellDef> {{reports.totalProfit | currency}} </td>
         </ng-container>
+
+        <ng-container matColumnDef="download">
+          <th mat-header-cell *matHeaderCellDef> Weekly CSV File</th>
+          <td mat-cell *matCellDef="let element"> <i class="bi bi-download" style="cursor: pointer;font-size: 20px; color: blue; " (click)="downloadFile(element.weekNum)"></i></td>
+          <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+      
       
     
       
