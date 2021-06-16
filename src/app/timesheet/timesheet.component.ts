@@ -148,7 +148,7 @@ displayedColumns: string[] = ['Day', 'ClockedIn', 'ClockedOut',
 
   redirect(lat: number, long: number){
       if(lat != null && long != null){
-        window.open("https://www.google.com/maps/search/?api=1&query="+lat+"%2C"+long+"to 2100+Baltimore+Ave+Ocean+City,+MD+21842", "_blank");
+        window.open("https://www.google.com/maps/search/?api=1&query="+lat+"%2C"+long+" to 2100+Baltimore+Ave+Ocean+City,+MD+21842", "_blank");
         
       }
      
