@@ -13,23 +13,34 @@
        {{l.payHistoryName}}
       </mat-panel-title>
       <mat-panel-description *ngIf="l.paid">
-        <i class="bi bi-check-circle-fill" style="color: grey;">Paid</i>
+        <i class="bi bi-check-circle-fill" style="color: grey;"> Paid</i>
 
       </mat-panel-description>
       <mat-panel-description *ngIf="!l.paid">
-        <i class="bi bi-calculator" style="color: red;">Pending</i>
+        <i class="bi bi-calculator" style="color: red;"> Pending</i>
         
       </mat-panel-description>
     </mat-expansion-panel-header>
     <p>
-      Total Pay:
-      {{transform(l.totalHours,l.payRate)|currency}}</p>
+      Total hours:
+      {{l.totalHours}}</p>
+    <p>
+    <p *ngIf="l.bonus >0">
+      Pay:
+      {{transform(l.totalHours,l.payRate, 0)|currency}}</p>
+      <p *ngIf="l.bonus >0">
+        Bonus:
+        {{l.bonus | currency}}
+      </p>
 
       <p>
-        Total hours:
-        {{l.totalHours}}</p>
-      <p>
+        Total Pay:
+        {{transform(l.totalHours,l.payRate,l.bonus)|currency}}</p>
+        <p>
 
+      
+
+       
 
         Start Period: {{formatDate(l.payBeginDate)}}
       </p>

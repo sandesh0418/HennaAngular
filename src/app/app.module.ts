@@ -33,6 +33,7 @@ import { SalesComponent } from './sales/sales.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ExpensesComponent } from './expenses/expenses.component';
 
+
 @NgModule({
     imports: [
         BrowserModule,

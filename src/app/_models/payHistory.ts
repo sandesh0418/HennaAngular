@@ -9,5 +9,7 @@ export class PayHistory {
     timesheetIDs: string;
     paid: boolean;
     userID: number;
+    bonus: number;
+    bonusID: number;
   
 }

@@ -4,4 +4,5 @@ export class Report {
     totalSales: number;
     store: number;
     netProfit: number;
+    bonus: number;
 }

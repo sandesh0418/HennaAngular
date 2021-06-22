@@ -6,4 +6,5 @@ export class WeeklyReport {
   totalSales: number;
   totalStore: number;
   totalPay: number;
+  totalBonus: number;
 }

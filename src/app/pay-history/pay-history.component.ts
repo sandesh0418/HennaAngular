@@ -21,8 +21,8 @@ export class PayHistoryComponent implements OnInit {
     })
   }
 
-  transform(value: any, rate: any){
-    return Math.ceil((value*rate*100)/100);
+  transform(value: any, rate: any, bonus: number){
+    return Math.ceil((value*rate*100)/100)+bonus;
   }
   
   formatDate(date: string){

@@ -194,4 +194,17 @@ export class UserService {
     }
 
 
+    addBonus(payHistoryID: number, amount: number){
+        return this.http.get<Expenses[]>
+        (`${environment.apiUrl}/api/admin/addBonus`, {
+            params:{
+                payHistoryID: payHistoryID.toString(),
+                amount: amount.toString()
+            }
+        })
+        .pipe(map(data => data),
+        catchError((error) => throwError(error)));
+    }
+
+
 }
